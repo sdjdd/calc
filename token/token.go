@@ -67,3 +67,7 @@ func (r *Reader) Dump() string {
 
 	return buf.String()
 }
+
+func (r *Reader) Tokens() []Token {
+	return append(r.tokens[:0:0], r.tokens...)
+}
