@@ -68,7 +68,7 @@ func (t TokenType) String() string {
 	case Identifier:
 		return "identifier"
 	case IntLiteral:
-		return "interer literal"
+		return "integer literal"
 	case StringLiteral:
 		return "string literal"
 	default:
