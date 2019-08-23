@@ -2,11 +2,9 @@ package lexer
 
 import (
 	"bytes"
-	"fmt"
+	"strings"
 
 	"github.com/sdjdd/calc/token"
-
-	"strings"
 )
 
 type DFAState int
@@ -159,16 +157,4 @@ func (l *Lexer) tokenize(code string) *token.Reader {
 	}
 
 	return token.NewReader(l.tokens)
-}
-
-func dump(tokenReader *token.Reader) {
-	fmt.Println("text\t\ttype")
-	fmt.Println("----\t\t----")
-	for {
-		token := tokenReader.Read()
-		if token == nil {
-			break
-		}
-		fmt.Printf("%s\t\t%s\n", token.Text, token.Type)
-	}
 }

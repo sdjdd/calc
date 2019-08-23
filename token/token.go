@@ -1,5 +1,9 @@
 package token
 
+import (
+	"strings"
+)
+
 type Token struct {
 	Type TokenType // 类型
 	Text string    // 文本值
@@ -46,4 +50,20 @@ func (r *Reader) SetPos(pos int) {
 	if pos >= 0 && pos < len(r.tokens) {
 		r.pos = pos
 	}
+}
+
+func (r *Reader) Dump() string {
+	buf := strings.Builder{}
+	buf.WriteString("text\t\ttype\n")
+	buf.WriteString("----\t\t----\n")
+	for {
+		token := r.Read()
+		if token == nil {
+			break
+		}
+		buf.WriteString(token.Text + "\t\t" + token.Type.String())
+		buf.WriteByte('\n')
+	}
+
+	return buf.String()
 }

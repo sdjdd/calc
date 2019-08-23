@@ -18,9 +18,8 @@ func TestLexer(t *testing.T) {
 	}
 
 	for _, script := range srtipts {
-		fmt.Printf("\nparse: %s\n\n", script)
+		fmt.Printf("[ %s ]\n", script)
 		tokenReader := lex.tokenize(script)
-		dump(tokenReader)
+		fmt.Println(tokenReader.Dump())
 	}
-
 }
